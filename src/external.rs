@@ -6,10 +6,12 @@ pub async fn api_call(query_param: &str) -> String {
     format!("response for '{}'", query_param)
 }
 
+#[allow(dead_code)]
 pub struct Stream<T: Send + 'static + Debug> {
     _pd: PhantomData<T>,
 }
 
+#[allow(dead_code)]
 impl<T: Send + 'static + Debug> Stream<T> {
     pub fn new() -> Self {
         Stream { _pd: PhantomData }

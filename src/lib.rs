@@ -1,7 +1,7 @@
 pub mod api;
+mod external;
 mod ingestion;
 mod processor;
-mod external;
 
 // Define the Query type alias
 pub type Query = String;

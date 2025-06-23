@@ -21,10 +21,7 @@ where
 }
 
 // Internal processing function
-pub(crate) async fn process<T>(
-    mut rx: mpsc::Receiver<Query>,
-    api: Arc<T>,
-) -> Result<()>
+pub(crate) async fn process<T>(mut rx: mpsc::Receiver<Query>, api: Arc<T>) -> Result<()>
 where
     T: ApiCaller,
 {
@@ -72,7 +69,11 @@ mod tests {
     impl MockQueryStream {
         fn new_with_duplicates() -> Self {
             let items = VecDeque::from(vec![
-                "a".into(), "b".into(), "a".into(), "c".into(), "b".into(),
+                "a".into(),
+                "b".into(),
+                "a".into(),
+                "c".into(),
+                "b".into(),
             ]);
             Self { items }
         }
@@ -81,10 +82,7 @@ mod tests {
     impl Stream for MockQueryStream {
         type Item = String;
 
-        fn poll_next(
-            mut self: Pin<&mut Self>,
-            _cx: &mut Context<'_>,
-        ) -> Poll<Option<Self::Item>> {
+        fn poll_next(mut self: Pin<&mut Self>, _cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {
             Poll::Ready(self.items.pop_front())
         }
     }
