@@ -198,4 +198,4 @@ The enhanced version showcases senior-level thinking about code organization, te
 
 ## License
 
-This project is provided as an educational example of Rust architectural patterns.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
